@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+<h1>{{title}}</h1>
+
+<h2>ЭТО СОДЕРЖИМОЕ {{title}} №{{id}}</h2>
+
+
+<ul>
+
+    {% for i in post%}
+
+    <li>
+        <h3>{{i.login}}</h3>
+        <h4>{{i.password}}</h4>
+        <h5>{{i.date_creation}}</h5>
+        <h5>{{i.is_delete}}</h5>
+        <hr/>
+    </li>
+
+    {% endfor %}
+
+
+</ul>
+
+
+
+
+
+{% endblock content %}
+  

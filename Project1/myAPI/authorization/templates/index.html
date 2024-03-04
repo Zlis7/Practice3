@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset='utf-8'>
+        <title>{{title}}</title>
+    </head>
+
+    <body>
+
+        <hr/>
+
+        {% block mainmenu %}
+
+        {% for i in list%}
+
+        <button>{{i}}</button> <br/>
+
+        {% endfor %}
+
+        {% endblock mainmenu %}
+
+        <hr/>
+
+        {% block content %}
+        {% endblock content %}
+
+        <hr/>
+
+        <h1>ЭТО INDEX.NTML держу в курсе</h1>
+
+        <hr/>
+    </body>
+    
+</html>
