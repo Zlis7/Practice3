@@ -19,9 +19,9 @@ from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
-    path('', views.index),
-    path('login/', views.login),
-    path('registration/', views.registration),
-    re_path(r'^archive/(?P<year>[0-9]{4})/', views.archive),
-    path('registration/<int:id>/', views.registration)
+    path('', views.index, name='home'),
+    path('login/', views.login, name='login'),
+    path('registration/', views.registration, name='registration'),
+    re_path(r'^archive/(?P<year>[0-9]{4})/', views.archive, name='archive'),
+    path('registration/<int:id>/', views.registration, name='registrationID')
 ]

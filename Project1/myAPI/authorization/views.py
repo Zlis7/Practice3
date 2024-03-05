@@ -1,19 +1,31 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from .models import *
 
-list = ['О сайте', 'Товары', 'Отзывы', 'События']
+list = [{'title':'LOGIN', 'url_name':'login'},
+        {'title':'REGISTRSTION', 'url_name':'registration'}
+    ]
 
 
 def index(request):
-    return render(request, 'index.html', {'list': list, 'title':'index', 'content':'Я устал'} )
+
+    return render(request, 'index.html', {'list': list})
 
 def login(request):
-    return render(request, 'login.html', {'list': list, 'title':'login', 'contant':'Я не устал'})
+    return render(request, 'login.html', {'list': list, 'title':'login', 'content':'Я не устал'})
 
-def registration(request, id:str=0) -> HttpResponse:
-    posts = Authorization.objects.all()
-    return render(request, 'registration.html', {'post': posts, 'list': list, 'title':'registration', 'contant':'Я чуть устал', 'id':id})
+
+def registration(request, id:str=1):
+    
+    post = get_object_or_404(Authorization, pk=id)
+
+    context = {
+        'post': post,
+        'post_login': post.login,
+        'cat_id': post.cat_id
+    }
+
+    return render(request, 'post.html', context = context)
 
 def archive(request, year):
 
