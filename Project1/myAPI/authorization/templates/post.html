@@ -4,4 +4,46 @@
 
 <h2>ЭТО СОДЕРЖИМОЕ {{post.login}} Категория - {{cat_id}}</h2>
 
+<form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    
+    <!--
+        {{form.as_p}}
+    -->
+
+    <!--
+        <p> 
+        <label class="form-label" for="{{ form.login.id_for_lable}}">
+            {{form.login.label}}:
+        </label>
+        {{form.login}}
+    </p>
+
+    <p> 
+        <label class="form-label" for="{{ form.password.id_for_lable}}">
+            {{form.password.label}}:
+        </label>
+        {{form.password}}
+    </p>
+    -->
+
+    {% for i in form%}
+
+    <p> 
+        <label class="form-label" for="{{ i.id_for_lable}}">
+            {{i.label}}:
+        </label>
+        {{i}}
+    </p>
+
+    <div class="form-error">{{i.errors}}</div>
+
+    {%endfor%}
+
+    <div class="form-error">{{form.non_field_errors}}</div>
+
+
+    <button type="submit">Добавить</button>
+</form>
+
 {% endblock content %}

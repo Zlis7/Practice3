@@ -11,7 +11,7 @@ class AuthorizationAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
+    list_display = ('name',)
 
 #admin.site.register(Authorization, AuthorizationAdmin)
 #admin.site.register(Category, CategoryAdmin)
