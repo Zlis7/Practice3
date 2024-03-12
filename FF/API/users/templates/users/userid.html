@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset = "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>User</title>
+    </head>
+
+    <body>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% for field in form%}
+
+                <div class="form-group">
+                    <label class="colLabel">{{field.label}}</label>
+                    <div class="colValue">
+                        <input class = "input" type="text" value="{{Логин}}">
+                    </div>
+                </div>
+              
+            {% endfor %}
+          
+
+        </form>
+
+
+        <!-- {% if user.photo %}
+    
+            <p><img src="{{user.photo.url}}" width="100px" height="100px"></p>
+    
+        {% endif%}
+
+            <p>{{user.username}}</p>
+            <p>{{user.password}}</p>
+            <p>{{user.first_name}}</p>
+            <p>{{user.last_name}}</p>
+            <p>{{user.date_birth}}</p>
+-->
+
+
+    </body>
+</html>

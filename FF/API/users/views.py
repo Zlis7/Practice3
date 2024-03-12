@@ -29,7 +29,6 @@ def login_user(request):
     return render(request, 'users/login.html', {'form':form_login})
 
 
-
 def register_user(request):
 
     if request.method == 'POST':
@@ -50,12 +49,22 @@ def register_user(request):
     return render(request, 'users/register.html', {'form' : form_register})
 
 
-def all_users(request):
+def user_id(request, id):
+    user = User.objects.get(pk = id)
 
-    users = User.objects.all()
+    form = RegisterUser()
 
-    return render(request, 'users/allusers.html', {'dataUser': users})
+    userFormProfile ={
+        'form': form,
+        'Фотография': getattr(user, 'photo'),
+        'Логин': getattr(user, 'username'),
+        'E-mail': getattr(user, 'email'),
+        'Имя': getattr(user, 'first_name'),
+        'Фамилия': getattr(user, 'last_name'),
+        'Дата рождения': getattr(user, 'date_birth')
+    }
 
+    return render(request, 'users/userid.html', userFormProfile)
 
 
 def handle_uploaded_file(f):
@@ -66,9 +75,7 @@ def handle_uploaded_file(f):
 
 
 def media_download(request):
-
     if request.method == 'POST':
-        
         form = UploadImageForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -79,8 +86,10 @@ def media_download(request):
         return render(request, 'users/mediadownload.html', {'form':form})
 
     else:
-
         form = UploadImageForm()
 
         return render(request, 'users/mediadownload.html', {'form':form})
 
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('users:home'))
