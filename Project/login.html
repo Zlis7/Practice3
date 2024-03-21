@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <script src="./app.js" defer></script>
+        
         <title>login</title>
     </head>
 
     <body>
 
-        <form action="http://127.0.0.1:8000/user/login/" method="get" enctype="text/plain" class="formLogin">
-            {% csrf_token %}
+        <form action="http://127.0.0.1:8000/user/login/" method="post" enctype="text/plain" class="formLogin">
             <input placeholder="Login" name="login" type="text">
             <input placeholder="Password" name="password" type="password">
             <button type="submit">Login</button>

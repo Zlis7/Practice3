@@ -1,14 +1,18 @@
 'use strict'
 
 const makeGetRequestAndOutputData = (url)=>{
-    fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
+
+  const data = new FormData(document.querySelector('.formLogin'))
+
+  fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: data
+    })
+      .then(response => response.json())
+      .then(data => {console.log(data)})
     
 }
 
