@@ -1,18 +1,11 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-
-NAME_INPUT_LOGIN = 'login'
-NAME_INPUT_PASSWORD = 'password'
+from django.http import JsonResponse, HttpResponse
 
 def home(request):
     return HttpResponse('home')
 
 def login(request):
-
-    if request.method == 'GET':
-       # print(f"LOGIN: {request.GET[NAME_INPUT_LOGIN]}\nPASSWORD: {request.GET[NAME_INPUT_PASSWORD]}")
-
-        return JsonResponse({'name':'Denis'})
+    return JsonResponse({'Access': True})
 
 def logout(request):
     return HttpResponse('logout')

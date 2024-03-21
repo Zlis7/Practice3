@@ -9,6 +9,7 @@
     <body>
 
         <form action="http://127.0.0.1:8000/user/login/" method="get" enctype="text/plain" class="formLogin">
+            {% csrf_token %}
             <input placeholder="Login" name="login" type="text">
             <input placeholder="Password" name="password" type="password">
             <button type="submit">Login</button>
